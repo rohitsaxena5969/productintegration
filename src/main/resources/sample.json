@@ -1,0 +1,39 @@
+[
+  {
+    "id": "1",
+    "name": "Laptop",
+    "category": "Electronics",
+    "price": {
+      "value" : 20.99,
+      "currency": "USD"
+    },
+    "currency": "USD",
+    "inStock": true,
+    "manufacturer": "Dell",
+    "tags": ["portable", "8GB RAM", "256GB SSD"]
+  },
+  {
+    "id": "2",
+    "name": "Smartphone",
+    "category": "Electronics",
+    "price": {
+      "value" : 30.99,
+      "currency": "USD"
+    },
+    "inStock": true,
+    "manufacturer": "Apple",
+    "tags": ["iOS", "64GB Storage", "Face ID"]
+  },
+  {
+    "id": "3",
+    "name": "Coffee Maker",
+    "category": "Home Appliances",
+    "price": {
+      "value" : 40.99,
+      "currency": "USD"
+    },
+    "inStock": false,
+    "manufacturer": "Cuisinart",
+    "tags": ["Stainless Steel", "12-Cup", "Programmable"]
+  }
+]
