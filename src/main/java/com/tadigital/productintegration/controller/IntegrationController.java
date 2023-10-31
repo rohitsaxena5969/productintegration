@@ -1,6 +1,8 @@
 package com.tadigital.productintegration.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class IntegrationController {
+
+    private static final Logger logger = LoggerFactory.getLogger(IntegrationController.class);
 
     @Value("${json.price.value.path}")
     private String priceValuePath;
@@ -44,15 +48,17 @@ public class IntegrationController {
     @PostMapping("/api/product")
     public ResponseEntity<String> createProduct(@RequestBody JsonNode productsNode) {
 
+        logger.info("Received products: {}", productsNode.toString());
+
         for (JsonNode productNode : productsNode) {
-            System.out.println("ID: " + readJsonValue(productNode, idPath));
-            System.out.println("Name: " + readJsonValue(productNode, namePath));
-            System.out.println("Category: " + readJsonValue(productNode, categoryPath));
-            System.out.println("Price Value: " + readJsonValue(productNode, priceValuePath));
-            System.out.println("Price Currency: " + readJsonValue(productNode, priceCurrencyPath));
-            System.out.println("In Stock: " + readJsonValue(productNode, inStockPath));
-            System.out.println("Manufacturer: " + readJsonValue(productNode, manufacturerPath));
-            System.out.println("Tags: " + readJsonValue(productNode, tagsPath));
+            logger.info("ID: {}", readJsonValue(productNode, idPath));
+            logger.info("Name: {}", readJsonValue(productNode, namePath));
+            logger.info("Category: {}", readJsonValue(productNode, categoryPath));
+            logger.info("Price Value: {}", readJsonValue(productNode, priceValuePath));
+            logger.info("Price Currency: {}", readJsonValue(productNode, priceCurrencyPath));
+            logger.info("In Stock: {}", readJsonValue(productNode, inStockPath));
+            logger.info("Manufacturer: {}", readJsonValue(productNode, manufacturerPath));
+            logger.info("Tags: {}", readJsonValue(productNode, tagsPath));
         }
         return ResponseEntity.ok("Products received: " + productsNode);
     }
