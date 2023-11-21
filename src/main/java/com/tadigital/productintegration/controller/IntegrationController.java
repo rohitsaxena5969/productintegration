@@ -1,8 +1,10 @@
 package com.tadigital.productintegration.controller;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.tadigital.productintegration.service.ProductSyncService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class IntegrationController {
 
     private static final Logger logger = LoggerFactory.getLogger(IntegrationController.class);
+
+    @Autowired
+    private ProductSyncService productSyncService;
 
     @Value("${json.price.value.path}")
     private String priceValuePath;
@@ -59,6 +64,8 @@ public class IntegrationController {
             logger.info("In Stock: {}", readJsonValue(productNode, inStockPath));
             logger.info("Manufacturer: {}", readJsonValue(productNode, manufacturerPath));
             logger.info("Tags: {}", readJsonValue(productNode, tagsPath));
+
+            productSyncService.syncProduct(productNode);
         }
         return ResponseEntity.ok("Products received: " + productsNode);
     }

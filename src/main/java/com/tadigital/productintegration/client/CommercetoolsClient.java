@@ -32,4 +32,8 @@ public class CommercetoolsClient {
         this.apiRoot = ClientConfigurationUtils.createClient(projectKey, clientCredentials, authUrl, apiUrl);
         logger.info("Commercetools Client initialized.");
     }
+
+    public ProjectApiRoot getApiRoot() {
+        return apiRoot;
+    }
 }
