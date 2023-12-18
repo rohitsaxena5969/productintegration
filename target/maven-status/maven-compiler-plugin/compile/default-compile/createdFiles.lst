@@ -1,0 +1,4 @@
+com/tadigital/productintegration/ProductintegrationApplication.class
+com/tadigital/productintegration/service/ProductSyncService.class
+com/tadigital/productintegration/controller/IntegrationController.class
+com/tadigital/productintegration/client/CommercetoolsClient.class
